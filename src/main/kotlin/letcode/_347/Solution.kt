@@ -20,7 +20,3 @@ class Solution {
         return result.toIntArray()
     }
 }
-
-fun main(args: Array<String>) {
-    print(Solution().topKFrequent(intArrayOf(1, 1, 1, 2, 2, 3), 2))
-}
