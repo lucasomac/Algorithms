@@ -8,14 +8,17 @@ class Solution {
         var startIndex = 0
 
         for (currentIndex in 0 until inputLength) {
+
+            println("Before --> Start Index: $startIndex | Max Length: $maxLength | Index Actual: $currentIndex")
             // If the character is already in the map, update the start index
             if (charIndexMap.containsKey(input[currentIndex])) {
-                startIndex = Math.max(charIndexMap[input[currentIndex]]!!, startIndex)
+                startIndex = charIndexMap[input[currentIndex]]!!.coerceAtLeast(startIndex)
             }
             // Calculate the maximum length of the substring
-            maxLength = Math.max(maxLength, currentIndex - startIndex + 1)
+            maxLength = maxLength.coerceAtLeast(currentIndex - startIndex + 1)
             // Update the character's index in the map
             charIndexMap[input[currentIndex]] = currentIndex + 1
+            println("After  --> Start Index: $startIndex | Max Length: $maxLength | Index Actual: $currentIndex")
         }
         return maxLength
     }
